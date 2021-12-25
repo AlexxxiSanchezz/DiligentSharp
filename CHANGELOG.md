@@ -11,3 +11,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Nuke configuration
 - CHANGELOG.md
+- Include file from [Diligent Engine](https://github.com/DiligentGraphics/DiligentEngine#your-project-does-not-use-cmake)
