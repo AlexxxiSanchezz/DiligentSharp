@@ -1,0 +1,52 @@
+{
+  "tasks": [
+    {
+      "profileName": "Diligent Core",
+      "sources": ["src/Core/Include/Primitives/interface/Object.h"],
+      "mode": "Clang",
+      "cacheDir": "build/cache",
+      "cacheKey": "core",
+      "controlDescriptors": [],
+      "converter": {},
+      "prefix": "",
+      "clang": {
+        "args": [
+          "--language=c++",
+          "--std=c++17",
+          "-m32",
+          "-Wno-expansion-to-defined",
+          "-Wno-ignored-attributes",
+          "-Wno-ignored-pragma-intrinsic",
+          "-Wno-nonportable-include-path",
+          "-Wno-pragma-pack",
+          "-Ibuild/include"
+        ],
+        "traverse": [],
+        "classes": {}
+      },
+      "exclude": [],
+      "rename": {},
+      "bakery": {
+        "profileNames": []
+      },
+      "output": {
+        "mode": "Default",
+        "path": "src/Core",
+        "licenseFile": "build/LICENSE_HEADER.txt",
+        "props": "build/props/bindings.props"
+      },
+      "namespace": "DiligentSharp.Core",
+      "extensionsNamespace": "DiligentSharp.Core.Extensions",
+      "nameContainer": {
+        "linux-x64": "libd3d11.so",
+        "win-x64": "d3d11.dll",
+        "win-x86": "d3d11.dll",
+        "osx-x64": "libd3d11.dylib",
+        "android": "libd3d11.so",
+        "iOS": "__Internal",
+        "className": "DiligentSharpCoreLibraryNameContainer"
+      },
+      "typeMaps": []
+    }
+  ]
+}

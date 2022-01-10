@@ -10,35 +10,25 @@ using Nuke.Common.Utilities.Collections;
 using static Nuke.Common.EnvironmentInfo;
 using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.IO.PathConstruction;
+using Microsoft.Build.Evaluation;
+using Microsoft.Build.Locator;
 
-class Build : NukeBuild
+partial class Build : NukeBuild
 {
-    /// Support plugins are available for:
-    ///   - JetBrains ReSharper        https://nuke.build/resharper
-    ///   - JetBrains Rider            https://nuke.build/rider
-    ///   - Microsoft VisualStudio     https://nuke.build/visualstudio
-    ///   - Microsoft VSCode           https://nuke.build/vscode
+    static void TriggerAssemblyResolution() => _ = new ProjectCollection();
 
-    public static int Main () => Execute<Build>(x => x.Compile);
+    Target FullCompile => CommonTarget
+    (
+        x => x.DependsOn(RegenerateBindings, Compile)
+    );
 
-    [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
-    readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
+    Target FullPack => CommonTarget
+    (
+        x => x.DependsOn(RegenerateBindings, Pack)
+    );
 
-    Target Clean => _ => _
-        .Before(Restore)
-        .Executes(() =>
-        {
-        });
-
-    Target Restore => _ => _
-        .Executes(() =>
-        {
-        });
-
-    Target Compile => _ => _
-        .DependsOn(Restore)
-        .Executes(() =>
-        {
-        });
-
+    Target FullPushToNuGet => CommonTarget
+    (
+        x => x.DependsOn(FullPack, PushToNuGet)
+    );
 }

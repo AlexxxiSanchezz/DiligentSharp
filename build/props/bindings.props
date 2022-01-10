@@ -1,0 +1,8 @@
+<Project>
+    <ItemGroup>
+        <PackageReference Include="Silk.NET.Core" Version="2.12.0" />
+        <PackageReference Include="Silk.NET.SilkTouch" Version="2.12.0" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
+    </ItemGroup>
+    
+    <Import Project="common.props" />
+</Project>
